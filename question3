@@ -1,10 +1,15 @@
 #!/bin/bash
 
 echo "Welcome to CISC220 Racing Arena"
-echo -n  "Enter the number of player and press [ENTER]:"
-read numPlayer
+read -p  "Enter the number of player and press [ENTER]:" numPlayer
 echo "User press your number to move forward"
 
 for ((i=1; i<=$numPlayer; i++)); do
 	echo "|->                                       # Lane $i #"
-done       
+done
+read userInput
+if (($userInput<$numPlayer)); then
+	echo Valid;
+else
+	echo Invalid;
+fi       
