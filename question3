@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Welcome to CISC220 Racing Arena"
+echo -n  "Enter the number of player and press [ENTER]:"
+read numPlayer
+echo "User press your number to move forward"
+
+for ((i=1; i<=$numPlayer; i++)); do
+	echo "|->                                       # Lane $i #"
+done       
