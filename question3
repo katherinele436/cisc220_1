@@ -1,11 +1,13 @@
 #!/bin/bash
 
+declare -A car
 echo "Welcome to CISC220 Racing Arena"
 read -p  "Enter the number of player and press [ENTER]:" numPlayer
 echo "User press your number to move forward"
 
 for ((i=1; i<=$numPlayer; i++)); do
-	echo "|->                                       # Lane $i #"
+	car=([car$i]="|->                                       # Lane $i #"
+	echo ${car[car$i]}
 done
 read userInput
 if (($userInput<$numPlayer)); then
