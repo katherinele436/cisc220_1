@@ -9,8 +9,14 @@ for ((i=0; i<$numPlayer; i++)); do
     echo "${var[i]}"
 done
 read userInput
-if (($userInput<$numPlayer)); then
-	echo Valid;
+pat=$((userInput-1))
+replace="~|->"
+for line in "${var[@]}"; do
+if
+	[[ "$line" = *$userInput* ]];then
+	var[$pat]="${line/|-> /$replace}"
+	echo "${var[$pat]}"
 else
-	echo Invalid;
-fi       
+	echo "$line"
+fi
+done           
