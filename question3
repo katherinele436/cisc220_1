@@ -4,8 +4,9 @@ echo "Welcome to CISC220 Racing Arena"
 read -p  "Enter the number of player and press [ENTER]:" numPlayer
 echo "User press your number to move forward"
 
-for ((i=1; i<=$numPlayer; i++)); do
-	echo "|->                                       # Lane $i #"
+for ((i=0; i<$numPlayer; i++)); do
+    var[$i]="|->                                        #  Lane $((i+1)) #"
+    echo "${var[i]}"
 done
 read userInput
 if (($userInput<$numPlayer)); then
