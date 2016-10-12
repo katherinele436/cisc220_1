@@ -8,15 +8,25 @@ for ((i=0; i<$numPlayer; i++)); do
     var[$i]="|->                                        #  Lane $((i+1)) #"
     echo "${var[i]}"
 done
-read userInput
+while true;do
+read -n1 userInput
+clear
 pat=$((userInput-1))
 replace="~|->"
 for line in "${var[@]}"; do
-if
-	[[ "$line" = *$userInput* ]];then
-	var[$pat]="${line/|-> /$replace}"
-	echo "${var[$pat]}"
+res="${line//[^~0]}"
+occurence="${#res}"
+if (($occurence==40));then
+	echo "Player$userInput wins" && break 2
 else
-	echo "$line"
+	if
+		[[ "$line" = *$userInput* ]];then
+		var[$pat]="${line/|-> /$replace}"
+		echo "${var[$pat]}"
+	else
+		echo "$line"
+	fi
+
 fi
-done           
+done
+done          
