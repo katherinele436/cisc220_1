@@ -8,10 +8,20 @@ echo "User press your number to move forward"
 for ((i=1; i<=$numPlayer; i++)); do
 	car=([car$i]="|->                                       # Lane $i #"
 	echo ${car[car$i]}
+	distance$i=0
 done
-read userInput
-if (($userInput<$numPlayer)); then
-	echo Valid;
-else
-	echo Invalid;
-fi       
+
+## while distance of a given car number less than required to win race
+while ((distance$userInput<40)); do
+	read userInput -n1  ##user should only be able to press one char at a time
+	if (($userInput<$numPlayer)); then
+		echo Valid;
+	else
+		echo Invalid;
+	fi
+	distance$userInput++   ##each loop increases the distance of that car number 1 spot
+        car[car$userInput]=${car[car$userInput]/"|"/"~|"} ##substring in car[car#] is replaced with ~
+        echo $car[car$userInput]
+        clear
+done
+	
