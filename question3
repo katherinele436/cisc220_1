@@ -14,8 +14,7 @@ clear
 pat=$((userInput-1))
 replace="~|->"
 	for line in "${var[@]}"; do
-	res="${line//[^~]}"
-	occurence="${#res}"
+	occurence=$(tr -dc '~' <<<"$line" | wc -c)
 		if (($occurence==40));then
 			 echo "$line" && break 2
 		else
