@@ -13,20 +13,21 @@ read -n1 userInput
 clear
 pat=$((userInput-1))
 replace="~|->"
-for line in "${var[@]}"; do
-res="${line//[^~]}"
-occurence="${#res}"
-if (($occurence==40));then
-	echo "Player$userInput wins" && break 2
-else
-	if
-		[[ "$line" = *$userInput* ]];then
-		var[$pat]="${line/|-> /$replace}"
-		echo "${var[$pat]}"
-	else
-		echo "$line"
-	fi
+	for line in "${var[@]}"; do
+	res="${line//[^~]}"
+	occurence="${#res}"
+		if (($occurence==40));then
+			 echo "$line" && break 2
+		else
+			if [[ "$line" = *$userInput* ]];then
+				var[$pat]="${line/|-> /$replace}"
+				echo "${var[$pat]}"
+			else
+				echo "$line"
+			fi
 
-fi
-done
+		fi
+	done
 done          
+echo "Player$userInput wins"
+
