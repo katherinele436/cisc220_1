@@ -14,7 +14,7 @@ clear
 pat=$((userInput-1))
 replace="~|->"
 for line in "${var[@]}"; do
-res="${line//[^~0]}"
+res="${line//[^~]}"
 occurence="${#res}"
 if (($occurence==40));then
 	echo "Player$userInput wins" && break 2
