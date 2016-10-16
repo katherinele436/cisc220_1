@@ -15,3 +15,4 @@ touch $name
 
 # read dirs and files, save the permissions
 ls -l | grep ^- | awk '{if (NR > 1) print $1 " " $9}' >> $name
+echo "$name created!"
