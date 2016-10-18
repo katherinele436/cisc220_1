@@ -5,7 +5,15 @@
 #!/bin/bash
 
 echo "Welcome to CISC220 Racing Arena"
-read -p  "Enter the number of player and press [ENTER]:" numPlayer
+while true;do
+        read -p  "Enter the number of player and press [ENTER]:" numPlayer
+        if [[ -n ${numPlayer//[0-9]/} ]]; then
+                echo "Enter a valid number"
+        else
+                break 2
+        fi
+done
+
 echo "User press your number to move forward"
 
 #Print all the lane
