@@ -11,6 +11,9 @@ read -p "Please enter a number: " num1                                    # Lets
 
 if [[ "$num1" != [0-9] ]]; then
    read -p "An error has occurred, please enter a valid number: " num1    # Prompts user to choose valid number if error occurs
+elif [ $num1 == ':q']; then                                               # If ':q' is entered, the loop exits and the script closes
+   echo The calculator will now close
+   exit                                                                   # Script terminates
 else
    while true; do
   
@@ -21,7 +24,7 @@ else
          if [[ "$num2" != [0-9] ]]; then
             read -p "An error has occurred, please enter a valid number: " num2   
          else 
-            total=(($num1 + $num2))
+            total=$((num1 + num2))
             echo The total so far is $total
          fi
   
@@ -30,7 +33,7 @@ else
          if [[ "$num2" != [0-9] ]]; then
             read -p "An error has occurred, please enter a valid number: " num2   
          else 
-            total=(($num1 - $num2))
+            total=$((num1 - num2))
             echo The total so far is $total
          fi
   
@@ -39,7 +42,7 @@ else
          if [[ "$num2" != [0-9] ]]; then
             read -p "An error has occurred, please enter a valid number: " num2   
          else 
-            total=(($num1 * $num2))
+            total=$((num1 * num2))
             echo The total so far is $total
          fi
   
@@ -48,17 +51,17 @@ else
          if [[ "$num2" != [0-9] ]]; then
             read -p "An error has occurred, please enter a valid number: " num2   
          else 
-            total=(($num1 / $num2))
+            total=$((num1 / num2))
             echo The total so far is $total
          fi
   
-      elif [ $op != '+' && $op != '-' && $op != '*' && $op != '/' ]; then     # Prompts user for valid operation if invalid one is chosen
+      elif [ $op != '+' && $op != '-' && $op != '*' && $op != '/' ]; then    # Prompts user for valid operation if invalid one is chosen
          read -p "An error has occured; please enter a valid operation: " op
-  
-      else [ $op == ':q']; then                                               # If ':q' is entered, the loop exits and the script closes
-         echo The calculator will now close
-         break
-  
+         
+      else [ $op == ':q']; then                                              # If ':q' is entered, the loop exits and the script closes
+         echo The calculator will now close                
+         exit                                                                # Script terminates
+         
       fi
 
    done
