@@ -8,20 +8,21 @@ echo "Welcome to CISC220 Racing Arena"
 read -p  "Enter the number of player and press [ENTER]:" numPlayer
 echo "User press your number to move forward"
 
+#Print all the lane
 for ((i=0; i<$numPlayer; i++)); do
     var[$i]="|->                                        #  Lane $((i+1)) #"
     echo "${var[i]}"
 done
 while true;do
-read -n1 userInput
+read -n1 userInput #take user input to move cars
 clear
 pat=$((userInput-1))
 replace="~|->"
 	for line in "${var[@]}"; do
-	occurence=$(tr -dc '~' <<<"$line" | wc -c)
-		if (($occurence==40));then
+	occurence=$(tr -dc '~' <<<"$line" | wc -c) #count the number of ~ in a line
+		if (($occurence==40));then #if number of ~ is 40 then the player wins
 			 echo "$line" && break 2
-		else
+		else 
 			if [[ "$line" = *$userInput* ]];then
 				var[$pat]="${line/|-> /$replace}"
 				echo "${var[$pat]}"
